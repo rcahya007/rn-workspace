@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import { colors } from '../../../assets/styles/Colors';
 import { Gs } from '../../../assets/styles/GlobalStyle';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import imageProfile from '../../../assets/images/profile_1.png';
+import gift from '../../../assets/icons/gift.png';
+import notification from '../../../assets/icons/notification.png';
 
 const Home = () => {
   const navigation = useNavigation();
@@ -15,11 +16,16 @@ const Home = () => {
         >
           <Image source={imageProfile} style={{ width: 50, height: 50 }} />
           <View>
-            <Text>Hi, Shayna</Text>
-            <Text>@shaynawork</Text>
+            <Text style={[Gs.poppinsRegular, { fontSize: 14 }]}>
+              Hi, Shayna
+            </Text>
+            <Text style={[Gs.poppinsBold, { fontSize: 30 }]}>@shaynawork</Text>
           </View>
         </View>
-        <View></View>
+        <View style={{ flexDirection: 'row', columnGap: 10 }}>
+          <Image source={gift} style={{ width: 24, height: 24 }} />
+          <Image source={notification} style={{ width: 24, height: 24 }} />
+        </View>
       </View>
     );
   };
@@ -42,6 +48,9 @@ const styles = StyleSheet.create({
   containerHeader: {
     paddingHorizontal: 24,
     paddingTop: 30,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
 
