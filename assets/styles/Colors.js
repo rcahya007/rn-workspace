@@ -7,4 +7,5 @@ export const colors = {
   greyContainer: '#E9E9E9',
   greyLight: '#F8F8F8',
   transparentBlack: 'rgba(0, 0, 0, 0.35)',
+  bgColor: 'rgba(255, 233, 221, 1)',
 };

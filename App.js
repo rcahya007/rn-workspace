@@ -5,10 +5,24 @@ import Details from './src/screens/Details';
 import Booking from './src/screens/Booking';
 import Checkout from './src/screens/Checkout';
 import Success from './src/screens/Success';
+import { useFonts } from 'expo-font';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import poppinsRegular from './assets/fonts/Poppins-Regular.ttf';
+import poppinsSemiBold from './assets/fonts/Poppins-SemiBold.ttf';
+import poppinsBold from './assets/fonts/Poppins-Bold.ttf';
+import { Text } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    poppinsRegular: poppinsRegular,
+    poppinsSemiBold: poppinsSemiBold,
+    poppinsBold: poppinsBold,
+  });
+  if (!fontsLoaded) {
+    return <Text>Loading...</Text>;
+  }
+
   return (
     <SafeAreaProvider>
       <NavigationContainer>

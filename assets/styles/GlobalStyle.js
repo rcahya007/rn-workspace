@@ -84,12 +84,12 @@ export const Gs = StyleSheet.create({
     borderBottomRightRadius: 32,
   },
   poppinsRegular: {
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'poppinsRegular',
   },
   poppinsSemiBold: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'poppinsSemiBold',
   },
   poppinsBold: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'poppinsBold',
   },
 });
