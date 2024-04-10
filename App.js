@@ -10,7 +10,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import poppinsRegular from './assets/fonts/Poppins-Regular.ttf';
 import poppinsSemiBold from './assets/fonts/Poppins-SemiBold.ttf';
 import poppinsBold from './assets/fonts/Poppins-Bold.ttf';
-import { Text } from 'react-native';
+import { SafeAreaView, Text } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
