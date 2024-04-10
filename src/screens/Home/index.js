@@ -1,4 +1,11 @@
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  FlatList,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import imageProfile from '../../../assets/images/profile_1.png';
 import gift from '../../../assets/icons/gift.png';
@@ -10,6 +17,53 @@ import iconLocation from '../../../assets/icons/location.png';
 import item1_a from '../../../assets/images/item_1_a.png';
 import item1_b from '../../../assets/images/item_1_b.png';
 import item1_c from '../../../assets/images/item_1_c.png';
+import CardPlacePopular from '../../components/CardPlacePopular';
+import item2_a from '../../../assets/images/item_2_a.png';
+import item2_b from '../../../assets/images/item_2_b.png';
+import item2_c from '../../../assets/images/item_2_c.png';
+import CardNewsworthy from '../../components/CardNewsworthy';
+
+const dataPopular = [
+  {
+    placeName: 'IndoorWork',
+    address: 'Jalan Angga Bekerja No. 10',
+    priceTag: '$599/day',
+    images: [item1_a, item1_b, item1_c],
+  },
+  {
+    placeName: 'Malang Batu',
+    address: 'Jalan Malang No. 10',
+    priceTag: '$299/day',
+    images: [item1_a, item1_b, item1_c],
+  },
+  {
+    placeName: 'Surabaya Zoo',
+    address: 'Jalan Surabaya No. 10',
+    priceTag: '$999/day',
+    images: [item1_a, item1_b, item1_c],
+  },
+];
+
+const dataNewsworthy = [
+  {
+    title: 'Surabaya',
+    address: 'Tanjung Perak',
+    price: '$299/day',
+    image: item2_a,
+  },
+  {
+    title: 'Malang',
+    address: 'Jalan Malang No. 10',
+    price: '$399/day',
+    image: item2_b,
+  },
+  {
+    title: 'Jakarta',
+    address: 'Jakarta Ancol',
+    price: '$599/day',
+    image: item2_c,
+  },
+];
 
 const Home = () => {
   const renderHeader = () => {
@@ -49,81 +103,39 @@ const Home = () => {
     return (
       <View style={styles.containerPopularSection}>
         <Text style={styles.titlePopular}>Popular</Text>
-        <View style={styles.popularContainerImage}>
-          <Image
-            source={item1_a}
-            style={{
-              height: null,
-              width: 205,
-              borderBottomLeftRadius: 24,
-              borderTopLeftRadius: 24,
-              borderBottomRightRadius: 24,
-            }}
-          />
-          <View
-            style={{
-              flexDirection: 'column',
-              flex: 1,
-              rowGap: 10,
-            }}
-          >
-            <Image
-              source={item1_b}
-              style={{
-                flex: 1,
-                width: null,
-                borderBottomLeftRadius: 24,
-                borderTopLeftRadius: 24,
-                borderBottomRightRadius: 24,
-              }}
+        <ScrollView horizontal={true} contentContainerStyle={{ columnGap: 20 }}>
+          {dataPopular.map((item, index) => (
+            <CardPlacePopular
+              key={index}
+              placeName={item.placeName}
+              address={item.address}
+              priceTag={item.priceTag}
+              images={item.images}
             />
-            <Image
-              source={item1_c}
-              style={{
-                flex: 1,
-                width: null,
-                borderBottomLeftRadius: 24,
-                borderTopLeftRadius: 24,
-                borderBottomRightRadius: 24,
-              }}
+          ))}
+        </ScrollView>
+      </View>
+    );
+  };
+
+  const renderNewsworthy = () => {
+    return (
+      <View>
+        <Text>renderNewsworthy</Text>
+        <FlatList
+          data={dataNewsworthy}
+          showsHorizontalScrollIndicator={false}
+          horizontal
+          keyExtractor={(item) => item.title}
+          renderItem={({ item }) => (
+            <CardNewsworthy
+              title={item.title}
+              address={item.address}
+              price={item.price}
+              image={item.image}
             />
-          </View>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            columnGap: 10,
-            alignItems: 'center',
-          }}
-        >
-          <View style={{ flex: 1 }}>
-            <Text style={{ ...Gs.poppinsBold, fontSize: 18, marginBottom: 2 }}>
-              IndoorWork
-            </Text>
-            <Text
-              style={{ ...Gs.poppinsRegular, fontSize: 14, color: colors.grey }}
-            >
-              Jalan Angga Bekerja No. 10
-            </Text>
-          </View>
-          <Text
-            style={{
-              ...Gs.poppinsSemiBold,
-              fontSize: 14,
-              color: colors.primary,
-              paddingHorizontal: 14,
-              paddingVertical: 8,
-              borderBottomLeftRadius: 12,
-              borderTopLeftRadius: 12,
-              borderBottomRightRadius: 12,
-              backgroundColor: colors.secondary,
-              height: 37,
-            }}
-          >
-            $599/day
-          </Text>
-        </View>
+          )}
+        ></FlatList>
       </View>
     );
   };
@@ -135,7 +147,7 @@ const Home = () => {
         {renderSearch()}
         <ScrollView>
           {renderPopularSection()}
-          {/* {renderNewsworthy()} */}
+          {renderNewsworthy()}
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -158,13 +170,6 @@ const styles = StyleSheet.create({
     ...Gs.poppinsBold,
     fontSize: 22,
     marginBottom: 24,
-  },
-  popularContainerImage: {
-    flexDirection: 'row',
-    height: 200,
-    flex: 1,
-    columnGap: 10,
-    marginBottom: 10,
   },
 });
 
