@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
     columnGap: 12,
+    marginBottom: 24,
   },
   iconContainer: {
     width: 24,

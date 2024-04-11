@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { Gs } from '../../../assets/styles/GlobalStyle';
 import { colors } from '../../../assets/styles/Colors';
+import ContainerAction from '../ContainerAction';
 
 export default CardPlacePopular = ({
   placeName,
@@ -72,22 +73,24 @@ export default CardPlacePopular = ({
             {address}
           </Text>
         </View>
-        <Text
+        <ContainerAction
           style={{
-            ...Gs.poppinsSemiBold,
-            fontSize: 14,
-            color: colors.primary,
-            paddingHorizontal: 14,
-            paddingVertical: 8,
-            borderBottomLeftRadius: 12,
-            borderTopLeftRadius: 12,
-            borderBottomRightRadius: 12,
             backgroundColor: colors.secondary,
             height: 37,
+            paddingHorizontal: 14,
+            paddingVertical: 8,
           }}
         >
-          {priceTag}
-        </Text>
+          <Text
+            style={{
+              ...Gs.poppinsSemiBold,
+              fontSize: 14,
+              color: colors.primary,
+            }}
+          >
+            {priceTag}
+          </Text>
+        </ContainerAction>
       </View>
     </View>
   );

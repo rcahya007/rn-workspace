@@ -121,8 +121,22 @@ const Home = () => {
   const renderNewsworthy = () => {
     return (
       <View>
-        <Text>renderNewsworthy</Text>
+        <Text
+          style={{
+            ...Gs.poppinsBold,
+            fontSize: 22,
+            paddingHorizontal: 24,
+            marginBottom: 12,
+          }}
+        >
+          renderNewsworthy
+        </Text>
         <FlatList
+          contentContainerStyle={{
+            paddingHorizontal: 24,
+            columnGap: 20,
+            marginBottom: 30,
+          }}
           data={dataNewsworthy}
           showsHorizontalScrollIndicator={false}
           horizontal
@@ -142,14 +156,14 @@ const Home = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View>
-        {renderHeader()}
-        {renderSearch()}
-        <ScrollView>
+      <ScrollView>
+        <View>
+          {renderHeader()}
+          {renderSearch()}
           {renderPopularSection()}
           {renderNewsworthy()}
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -164,7 +178,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   containerPopularSection: {
-    padding: 24,
+    paddingLeft: 24,
+    paddingRight: 24,
+    paddingBottom: 24,
   },
   titlePopular: {
     ...Gs.poppinsBold,
