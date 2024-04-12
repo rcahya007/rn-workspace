@@ -11,7 +11,6 @@ import imageProfile from '../../../assets/images/profile_1.png';
 import gift from '../../../assets/icons/gift.png';
 import notification from '../../../assets/icons/notification.png';
 import { Gs } from '../../../assets/styles/GlobalStyle';
-import { colors } from '../../../assets/styles/Colors';
 import InputText from '../../components/InputText';
 import iconLocation from '../../../assets/icons/location.png';
 import item1_a from '../../../assets/images/item_1_a.png';
@@ -22,6 +21,8 @@ import item2_a from '../../../assets/images/item_2_a.png';
 import item2_b from '../../../assets/images/item_2_b.png';
 import item2_c from '../../../assets/images/item_2_c.png';
 import CardNewsworthy from '../../components/CardNewsworthy';
+import { useNavigation } from '@react-navigation/native';
+import BottomNav from '../../components/BottomNav';
 
 const dataPopular = [
   {
@@ -66,6 +67,11 @@ const dataNewsworthy = [
 ];
 
 const Home = () => {
+  const navigation = useNavigation();
+  const handlePress = () => {
+    // navigation.navigate('Details');
+    console.log('press');
+  };
   const renderHeader = () => {
     return (
       <View style={styles.containerHeader}>
@@ -143,6 +149,7 @@ const Home = () => {
           keyExtractor={(item) => item.title}
           renderItem={({ item }) => (
             <CardNewsworthy
+              onPress={handlePress}
               title={item.title}
               address={item.address}
               price={item.price}
@@ -164,6 +171,9 @@ const Home = () => {
           {renderNewsworthy()}
         </View>
       </ScrollView>
+      <View style={{ paddingVertical: 30 }}>
+        <BottomNav />
+      </View>
     </SafeAreaView>
   );
 };
