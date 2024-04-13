@@ -1,9 +1,9 @@
-import { Image, StyleSheet, TextInput, View } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import { colors } from '../../../assets/styles/Colors';
 
 const InputText = ({ icon, label, placeholder }) => {
   return (
-    <>
+    <View>
       {label && <Text style={styles.label}>{label}</Text>}
       <View style={styles.searchContainer}>
         {icon && <Image source={icon} style={styles.iconContainer} />}
@@ -13,7 +13,7 @@ const InputText = ({ icon, label, placeholder }) => {
           placeholderTextColor={colors.grey}
         />
       </View>
-    </>
+    </View>
   );
 };
 
@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   searchContainer: {
-    marginHorizontal: 24,
     paddingHorizontal: 20,
     paddingVertical: 13,
     display: 'flex',
@@ -34,7 +33,6 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
     columnGap: 12,
-    marginBottom: 24,
   },
   iconContainer: {
     width: 24,

@@ -69,8 +69,8 @@ const dataNewsworthy = [
 const Home = () => {
   const navigation = useNavigation();
   const handlePress = () => {
-    // navigation.navigate('Details');
-    console.log('press');
+    navigation.navigate('Details');
+    // console.log('press');
   };
   const renderHeader = () => {
     return (
@@ -96,7 +96,12 @@ const Home = () => {
 
   const renderSearch = () => {
     return (
-      <View>
+      <View
+        style={{
+          paddingHorizontal: 24,
+          paddingBottom: 24,
+        }}
+      >
         <InputText
           icon={iconLocation}
           placeholder={'Find work spaces in Jakarta'}
